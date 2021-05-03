@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const session = require("express-session");
 const ejsLayouts = require("express-ejs-layouts");
+const apiRouter = require('./routes/serverRoute');
 const app = express();
 
 require('dotenv').config()
@@ -10,6 +11,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 app.use(express.json());
+app.use('/api/food', apiRouter);
 app.set("view engine", "ejs");
 
 app.use(
@@ -26,13 +28,7 @@ app.use(
 );
 
 
-// Middleware
-
-
-// Routes
-
-
-app.listen(3001, function() {
+app.listen(3000, function() {
     console.log(
         "Server running. Visit: https://localhost:3000 in your browser 🚀"
     );
