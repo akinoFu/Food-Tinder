@@ -1,12 +1,12 @@
 const mysql = require('mysql');
 
 const pool = mysql.createPool({
-    connectionLimit: 10,
-    passport: 'acit2911',
-    user: 'localhost',
+    host: 'localhost',
+    user: 'admin',
+    passport: '',
     database: 'food',
-    host:'localhost',
-    port: '3306'
+    port: '3306',
+    connectionLimit: 10
 });
 
 let foodDatabase = {};
