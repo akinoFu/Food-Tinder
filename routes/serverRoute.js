@@ -8,7 +8,7 @@ const { createApi } =require("unsplash-js")
 
 global.fetch = fetch;
 const unsplash = createApi({
-  accessKey: process.env.UNSPLASH_ACCESS,
+  accessKey: "YZxaihlPPvx1yPCqSc-euoYSTlmiFuB-2q8j1w-rZvU",
   fetch: fetch
 })
 
@@ -27,7 +27,22 @@ router.get('/', async(req, res, next) => {
 router.get('/:id', async(req, res, next) => {
     try {
         let result = await db.one(req.params.id);
-        res.json(result)
+        let food = JSON.parse(JSON.stringify(result));
+        let name = food[0].FoodName
+        await unsplash.photos.getRandom({
+            query: name,
+            featured: true,
+            count: 1
+        }).then(result => {
+            switch (result.type) {
+                case 'error':
+                    console.log('unsplash error occured: ', result.errors[0]);
+                case 'success':
+                    const photo = JSON.parse(JSON.stringify(result.response));
+                    url = photo[0].urls.regular
+                    res.render("./swipe", {food: name, photo: url})
+            }
+        });
     } 
     catch (error) {
         console.log(error);

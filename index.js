@@ -13,6 +13,7 @@ app.use(ejsLayouts);
 app.use(express.json());
 app.use('/api/food', apiRouter);
 app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(
     session({
