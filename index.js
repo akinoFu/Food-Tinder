@@ -34,3 +34,5 @@ app.listen(3000, function() {
         "Server running. Visit: https://localhost:3000 in your browser 🚀"
     );
 });
+
+module.exports = app;
