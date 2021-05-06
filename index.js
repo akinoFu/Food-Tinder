@@ -35,4 +35,7 @@ app.listen(3000, function() {
     );
 });
 
+console.log(`node-env: ${process.env.NODE_ENV}`)
+
+
 module.exports = app;
