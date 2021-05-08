@@ -1,13 +1,16 @@
-<!DOCTYPE html> 
-<HTML lang = 'en'>
-    <head>
-        <meta charset = "utf-8">
-        <link rel = "stylesheet" href = "/style.css" type = "text/css">
-        <script src="/JS/app.js"></script>
-    <body>
-        <h1><%= food %></h1>
-        <button onclick="randomPage()">Click me</button> 
-        <img src= <%= url %>>
-    </body>
-    </head>
-</HTML>
+
+ <body>
+    <script src="/JS/app.js"></script>
+    <button onclick="randomPage()">Click me</button> 
+    <div class = "wrapper">
+        <div class = "title">
+            <h1>Food Tinder</h1>
+        </div>
+        <div class = "food_name">
+            <h1><%= food %></h1>
+        </div>
+        <div class = swipe_image>
+            <img src= <%= url %> width = 500 height = 500>
+        </div>
+    </div>
+</body>
