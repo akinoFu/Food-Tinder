@@ -1,3 +1,53 @@
-h1{
-    
+
+html, body{
+    background-color: #ebbcba;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-rows: 200px 200px 900px;
+    grid-template-columns: 250px 1fr;  
+    grid-template-areas: 
+        'sidebar header header'
+        'sidebar food food'
+        'sidebar image image '; 
+}
+
+.wrapper > .title{
+    grid-area: header;
+}
+
+.title > h1{
+    text-align: center;
+    color: #f90b6d;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 34px;
+    font-weight: 300;
+    font-family: 'Itim', cursive;
+}
+
+.wrapper > .food_name{
+    grid-area: food;
+}
+
+.food_name > h1{
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Itim', cursive;
+}
+
+.wrapper > .swipe_image{
+    grid-area: image;
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
 }
