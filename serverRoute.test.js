@@ -2,6 +2,7 @@ const app = require("./index");
 const db = require("./database/index");
 const request = require("supertest");
 
+
 beforeAll((done) => {
     done();
 });
@@ -15,7 +16,7 @@ describe("GET a list of food (/api/food/) - success", () => {
     const mock1 = jest.fn()
     mock1.mockReturnValue([{ID: 1, FoodName: "Chocolate Donuts"},
                           {ID: 2, FoodName: "Ramen"},
-                          {ID: 3, FoodName: "Roast Chichen"}])
+                          {ID: 3, FoodName: "Roast Chicken"}])
     db.all = mock1
 
     it("Check the statuscode", async () => {
@@ -23,6 +24,23 @@ describe("GET a list of food (/api/food/) - success", () => {
         .expect(200);
     });
     
+    it("failing to fetch database", async () => {
+        db.all.mockImplementationOnce(() => Promise.reject(error));
+        await request(app).get("/api/food")
+        .expect(500);
+      });
+
+    it("Check for existing id", async () => {
+        await request(app).get("/api/food/1")
+        .expect(200);
+    });
+
+    it("Check error for non existing id", async () => {
+        await request(app).get("/api/food/102")
+        .expect(500);
+    });
+
+
     it("Check the length of the data", async () => {
         await request(app).get("/api/food")
         .expect((response) => {
@@ -35,11 +53,22 @@ describe("GET a list of food (/api/food/) - success", () => {
         .expect((response) => {
             expect(response.body).toEqual([{ID: 1, FoodName: "Chocolate Donuts"},
                                            {ID: 2, FoodName: "Ramen"},
-                                           {ID: 3, FoodName: "Roast Chichen"}]);
+                                           {ID: 3, FoodName: "Roast Chicken"}]);
         });
     });
 });
 
+
+
+
+
+// describe("Get food ID(/api/food/:id", () => {
+//     const mock2 = jest.fn()
+//     mock2.mockReturnValue()
+//     db.one = mock2
+
+
+// });
 
 // describe("GET a list of food (/api/food/) - failure", () => {
     // const mock2 = jest.fn()
