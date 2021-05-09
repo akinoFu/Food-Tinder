@@ -1,4 +1,4 @@
-const db = require("./database/index");
+const db = require("../database/index");
 
 describe("Test db.all - return all food", () => {
     it("success", async () => {

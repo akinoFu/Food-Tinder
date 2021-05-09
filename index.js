@@ -31,7 +31,7 @@ app.use(
 
 app.listen(3000, function() {
     console.log(
-        "Server running. Visit: https://localhost:3000 in your browser 🚀"
+        "Server running. Visit: http://localhost:3000 in your browser 🚀"
     );
     
 });
