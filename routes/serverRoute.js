@@ -4,7 +4,10 @@ const db = require('../database');
 
 // Unsplash setup
 const fetch  = require("node-fetch")
-const { createApi } =require("unsplash-js")
+const { createApi } =require("unsplash-js");
+
+// Authentication check
+const { ensureAuthenticated } = require('../middleware/checkAuth');
 
 global.fetch = fetch;
 const unsplash = createApi({
@@ -13,7 +16,7 @@ const unsplash = createApi({
 })
 
 
-router.get('/', async(req, res, next) => {
+router.get('/', ensureAuthenticated, async(req, res, next) => {
     try {
         let results = await db.all();
         res.json(results)
@@ -24,7 +27,7 @@ router.get('/', async(req, res, next) => {
     }
 });
 
-router.get('/:id', async(req, res, next) => {
+router.get('/:id', ensureAuthenticated, async(req, res, next) => {
     try {
         let result = await db.one(req.params.id);
         let food = JSON.parse(JSON.stringify(result));
