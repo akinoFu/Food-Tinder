@@ -32,4 +32,17 @@ userModel.findById = (id) => {
         })
     })
 }
+
+userModel.findLikes = (id) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`SELECT foodName, timesLiked FROM likes WHERE userID = ${id}`, (error, results) => {
+            if (error) {
+                return reject(error);
+            }
+            return resolve(results)
+        })
+    })
+}
+
+
 module.exports = { userModel };
