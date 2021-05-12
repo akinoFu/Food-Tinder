@@ -1,0 +1,22 @@
+<body>
+    <h1>Hello <%=user%></h1>
+    <% if (list.length == 0) { %>
+          <h2>Swipe to like some food!</h2>
+    <% } else {%>
+        <h2>List of Likes</h2>
+        <table>
+            <tr>
+                <th>Food</th>
+                <th>Times</th>
+            </tr>
+            <tr>
+                <% list.forEach((like) => { %>
+                    <td><%= like.foodName%></td>
+                    <td><%=like.timesLiked%></td>
+            </tr>
+                <% }) %>
+        </table>
+    <% } %>
+    
+    <a href="/auth/logout" class='btn btn-primary'>Logout</a>
+</body>
