@@ -23,5 +23,14 @@ describe("Return a food with an ID", () => {
     });
 });
 
-
+describe("Test db.user - return all likes list", () => {
+    it("success", async () => {
+        const result = await db.user();
+        expect(result).toEqual([{userId: 1, foodId: 1, FoodName: "Chocolate Donuts", TimesLiked:4},
+                                {userId: 1, foodId: 2, FoodName: "Ramen", TimesLiked:3},
+                                {userId: 1, foodId: 3, FoodName: "Roast Chichen", TimedsLiked: 2},
+                                {userId: 1, foodId: 4, FoodName: "Pho", TimedsLiked: 1},
+                                {userId: 1, foodId: 5, FoodName: "Hamburger", TimedsLiked: 2}])
+    });
+});
 

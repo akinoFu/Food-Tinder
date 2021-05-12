@@ -65,41 +65,34 @@ describe("Get a food pict (/api/food/:id)", () => {
 
 });
 
+// ========== GET a list of likes (/api/user/:id) ==========
+describe("GET a list of likes (/api/user/:id)", () => {
+    const mockDbUser = jest.fn();
+    const result = [{userId: 1, foodId: 1, FoodName: "Chocolate Donuts", TimesLiked:4},
+                    {userId: 1, foodId: 2, FoodName: "Ramen", TimesLiked:3},
+                    {userId: 1, foodId: 3, FoodName: "Roast Chichen", TimedsLiked: 2},
+                    {userId: 1, foodId: 4, FoodName: "Pho", TimedsLiked: 1},
+                    {userId: 1, foodId: 5, FoodName: "Hamburger", TimedsLiked: 2}]
+    mockDbUser.mockReturnValue(result)
+    db.user = mockDbUser
 
-// ========== GET a list of likes (/api/likes/:userId) ==========
-// describe("GET a list of likes (/api/likes/:userId)", async () => {
-//     it("Check the statuscode (The user id exists)", async () => {
-//         await request(app).get("/api/food/likes/1")
-//         .expect(200)
-//     });
+    it("Check the statuscode (success)", async () => {
+        await request(app).get("/api/user/1")
+        .expect(200);
+    });
+    
+    it("Check the statuscode (failure)", async () => {
+        db.all.mockImplementationOnce(() => Promise.reject());
+        await request(app).get("/api/user/100")
+        .expect(500);
+      });
 
-//     it("Check the value", async () => {
-//         await request(app).get("/api/food/likes/1")
-//         .expect((response) => {
-//             expect(response.body).toEqual([{ID: 1},
-//                                            {ID: 2},
-//                                            {ID: 5}]);
-//         });
-//     });
-
-//     it("Check the statuscode (The user id does not exist)", async () => {
-//         await request(app).get("/api/food/likes/100")
-//         .expect(500)
-//     });
-// });
-
-// ========== GET a list of history (/api/hists/:userId) ==========
-// describe("return a list of history", async () => {
-//     pass
-// });
-
-// ========== POST a food to a list of like (/api/food/:userId/:id) ==========
-// describe("Add a food to a list of like", async () => {
-//     pass
-// });
-
-// ========== POST a restaurant the user viewd to a list of hitory (/api/hist/rest/:userId/:restaurantId) ==========
-// describe("Add a restaurant the user viewd to a list of hitory", async () => {
-//     pass
-// });
+    it("Check the length of the data", async () => {
+        await request(app).get("/api/user/1")
+        .expect((response) => {
+            expect(response.body.length).toEqual(5);
+        });
+    });
+    
+});
 
