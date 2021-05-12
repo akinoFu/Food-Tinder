@@ -14,7 +14,6 @@ router.get('/:id', ensureAuthenticated, async(req, res, next) => {
         let sortedLikes = likes.sort(function(a, b) {
             return b.timesLiked - a.timesLiked
         })
-        console.log(sortedLikes);
         res.render("./dashboard", {user: name, list: sortedLikes});  
     } 
     catch (error) {

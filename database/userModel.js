@@ -44,5 +44,28 @@ userModel.findLikes = (id) => {
     })
 }
 
+userModel.editLikes = (times, foodID, userID) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`UPDATE likes SET timesLiked = ${times} WHERE userID = ${userID} AND foodID = "${foodID}"`, (error, results) => {
+            if (error) {
+                return reject(error);
+            }
+            console.log("Successfully updated the list of likes!")
+            return resolve(results);
+        });
+    });
+};
+
+userModel.addLikes = (userID, foodID, foodName) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`INSERT INTO likes VALUES (${userID}, ${foodID}, "${foodName}", 1)`, (error, results) => {
+            if (error) {
+                return reject(error);
+            }
+            console.log("Successfully added to the list of likes!")
+            return resolve(results);
+        });
+    });
+};
 
 module.exports = { userModel };
