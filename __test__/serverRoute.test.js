@@ -84,7 +84,7 @@ describe("GET a list of likes (/api/user/:id)", () => {
     it("Check the statuscode (failure)", async () => {
         db.all.mockImplementationOnce(() => Promise.reject());
         await request(app).get("/api/user/100")
-        .expect(500);
+        .expect(404);
       });
 
     it("Check the length of the data", async () => {

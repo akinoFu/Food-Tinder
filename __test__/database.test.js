@@ -1,4 +1,5 @@
 const db = require("../database/index");
+const userdb = require("../database/userModel")
 
 describe("Test db.all - return all food", () => {
     it("success", async () => {
@@ -34,3 +35,16 @@ describe("Test db.user - return all likes list", () => {
     });
 });
 
+describe("Test userdb.findOne - return info by user email", () => {
+    it("success", async () => {
+        const result = await userdb.findOne('ayamamoto7@my.bcit.ca');
+        expect(result).toEqual([{id: 1, fullname: 'Akino', email:'ayamamoto7@my.bcit.ca', password:'Group7!'}])
+    });
+});
+
+describe("Test userdb.findById - return info by user id", () => {
+    it("success", async () => {
+        const result = await userdb.findById(1);
+        expect(result).toEqual([{id: 1, fullname: 'Akino', email:'ayamamoto7@my.bcit.ca', password:'Group7!'}])
+    });
+});
