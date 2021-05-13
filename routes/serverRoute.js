@@ -63,16 +63,22 @@ router.get('/:id/likes', ensureAuthenticated, async(req, res, next) => {
         let userID = req.session.passport.user;
         let likes = await users.findLikes(userID)
         
+        let isUpdate = false;
+        let times = 0;
         for (const food of likes) {
             if (name === food.foodName) {
-                let times = food.timesLiked;
-                let newTimes = times + 1;
-                await users.editLikes(newTimes, foodID, userID);
-                res.redirect(`/api/food/${foodID}`)
-            } else {
-                await users.addLikes(userID, foodID, name);
-                res.redirect(`/api/food/${foodID}`);
+                isUpdate = true
+                times = food.timesLiked
             }
+        };
+
+        if (isUpdate) {
+            let newTimes = times + 1;
+            await users.editLikes(newTimes, foodID, userID);
+            res.redirect(`/api/food/${foodID}`)
+        } else {
+            await users.addLikes(userID, foodID, name);
+            res.redirect(`/api/food/${foodID}`);
         }
     }
     catch (error) {
