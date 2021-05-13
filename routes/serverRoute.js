@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../database');
+const db = require('../database/index');
+const users = require('../database/userModel').userModel;
+
+// Authentication check
+const { ensureAuthenticated } = require('../middleware/checkAuth');
 
 // Unsplash setup
 const fetch  = require("node-fetch")
 const { createApi } =require("unsplash-js");
-
-// Authentication check
-const { ensureAuthenticated } = require('../middleware/checkAuth');
 
 global.fetch = fetch;
 const unsplash = createApi({
@@ -52,5 +53,33 @@ router.get('/:id', ensureAuthenticated, async(req, res, next) => {
         res.sendStatus(500);
     }
 });
+
+router.get('/:id/likes', ensureAuthenticated, async(req, res, next) => {
+    try {
+        let result = await db.one(req.params.id);
+        let food = JSON.parse(JSON.stringify(result));
+        let foodID = food[0].ID;
+        let name = food[0].FoodName;
+        let userID = req.session.passport.user;
+        let likes = await users.findLikes(userID)
+        
+        for (const food of likes) {
+            if (name === food.foodName) {
+                let times = food.timesLiked;
+                let newTimes = times + 1;
+                await users.editLikes(newTimes, foodID, userID);
+                res.redirect(`/api/food/${foodID}`)
+            } else {
+                await users.addLikes(userID, foodID, name);
+                res.redirect(`/api/food/${foodID}`);
+            }
+        }
+    }
+    catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+});
+
 
 module.exports = router;

@@ -5,6 +5,7 @@ const ejsLayouts = require("express-ejs-layouts");
 const passport = require("./middleware/passport");
 const apiRouter = require('./routes/serverRoute');
 const authRouter = require('./routes/authRoute');
+const userRouter = require('./routes/userRoute');
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use((req, res, next) => {
 
 app.use('/api/food', apiRouter);
 app.use('/auth', authRouter);
+app.use('/user', userRouter)
 
 console.log(`node-env: ${process.env.NODE_ENV}`)
 
