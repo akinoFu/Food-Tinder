@@ -40,10 +40,6 @@ html, body{
     margin-top: 50px;
     font-family: 'Itim', cursive;
 }
-/* 
-.wrapper > .swipe_image{
-    grid-area: image;
-} */
 
 .swipe_image{
     grid-area: image;
@@ -55,14 +51,6 @@ html, body{
     'left pic   right'
     '.    down  .'; 
 }
-/* 
-img{
-    grid-area: pic;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-} */
 
 img{
     grid-area: pic;
