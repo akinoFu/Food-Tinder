@@ -1,22 +1,36 @@
 <body>
-    <h1>Hello <%=user%></h1>
-    <% if (list.length == 0) { %>
-          <h2>Swipe to like some food!</h2>
-    <% } else {%>
-        <h2>List of Likes</h2>
-        <table>
-            <tr>
-                <th>Food</th>
-                <th>Times</th>
-            </tr>
-            <tr>
-                <% list.forEach((like) => { %>
-                    <td><%= like.foodName%></td>
-                    <td><%=like.timesLiked%></td>
-            </tr>
-                <% }) %>
-        </table>
-    <% } %>
-    
-    <a href="/auth/logout" class='btn btn-primary'>Logout</a>
+    <div class = "header">
+        <img src = "/Food_Tinder.png" alt = "logo" width = "100" height = "100">
+        <a href="/auth/logout" class='btn btn-primary'>Logout</a>
+        <h1>Food Tinder</h1>
+    </div>
+    <div class = "content">
+        <div class = "hello_user">
+            <h1>Hello <%=user%></h1>
+        </div>
+        <% if (list.length == 0) { %>
+            <h2>Swipe to like some food!</h2>
+        <% } else {%>
+            <div class = "list_likes">
+                <h2>Your Liked Foods</h2>
+            </div>
+            <div class = "table_list">
+                    <table>
+                        <tr>
+                            <th>Food</th>
+                            <th>Times</th>
+                        </tr>
+                        <tr>
+                            <% list.forEach((like) => { %>
+                                <td><%= like.foodName%></td>
+                                <td><%=like.timesLiked%></td>
+                        </tr>
+                            <% }) %>
+                    </table>
+            </div>
+        <% } %>
+        
+        
+    </div>
+    <div class = "footer"></footer>
 </body>

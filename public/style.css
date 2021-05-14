@@ -1,4 +1,3 @@
-
 html, body{
     background-color: #ebbcba;
     height: 100vh;
@@ -23,7 +22,7 @@ html, body{
 }
 
 .title > h1{
-    text-align: center;
+    margin-left: 800px;
     color: #f90b6d;
     font-family: 'Open Sans', sans-serif;
     font-size: 34px;
@@ -36,7 +35,8 @@ html, body{
 }
 
 .food_name > h1{
-    text-align: center;
+    display: block;
+    margin-left: 800px;
     margin-top: 50px;
     font-family: 'Itim', cursive;
 }
@@ -45,9 +45,74 @@ html, body{
     grid-area: image;
 }
 
-img{
+.swipe_image > img{
     display: block;
+    margin-left: 655px;
+    margin-top: 50px;
+}
+
+/* CSS for list of likes page */
+
+.header, .footer{
+    height: 7vh;
+    background: #b4637a;
+}
+
+.footer{
+    position: absolute;
+    bottom:0;
+    width:100%;
+    height:60px;
+}
+
+
+.header > .btn-primary{
+    font-size: 20px;
+    float: right;
+    background-color: #b4637a;
+    border: none;
+    margin-top: 15px;
+}
+
+.header > h1{
+    display: inline-block;
+}
+
+.header > img{
+    display: inline-block;
+
+}
+
+.header > .btn-primary:hover{
+    background-color: #b4637a;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    height: 87%; 
+}
+
+.content > .hello_user{
+    padding-top: 50px;
+    padding-left: 350px;
+}
+
+.content > .list_likes{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.content > .table_list{
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    
+}
+
+.content >.table_list > table > tbody > tr > th{
+    padding: 5px;
+}
+
+.content >.table_list > table > tbody > tr > td{
+    padding: 5px;
 }
