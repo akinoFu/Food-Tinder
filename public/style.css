@@ -9,12 +9,12 @@ html, body{
 
 .wrapper{
     display: grid;
-    grid-template-rows: 200px 200px 900px;
-    grid-template-columns: 250px 1fr;  
+    grid-template-rows: 100px 100px 1fr;
+    grid-template-columns: 200px 1fr 1fr;  
     grid-template-areas: 
-        'sidebar header header'
-        'sidebar food food'
-        'sidebar image image '; 
+    'sidebar header .'
+    'sidebar food .'
+    'sidebar image .'; 
 }
 
 .wrapper > .title{
@@ -22,7 +22,7 @@ html, body{
 }
 
 .title > h1{
-    margin-left: 800px;
+    text-align: center;
     color: #f90b6d;
     font-family: 'Open Sans', sans-serif;
     font-size: 34px;
@@ -35,20 +35,41 @@ html, body{
 }
 
 .food_name > h1{
-    display: block;
-    margin-left: 800px;
+    text-align: center;
     margin-top: 50px;
     font-family: 'Itim', cursive;
 }
 
-.wrapper > .swipe_image{
+.swipe_image{
     grid-area: image;
+    display: grid;
+    grid-template-rows: auto 500px auto;
+    grid-template-columns: 100px 500px 100px;
+    grid-template-areas: 
+    '.    up    .'
+    'left pic   right'
+    '.    down  .'; 
 }
 
-.swipe_image > img{
-    display: block;
-    margin-left: 655px;
-    margin-top: 50px;
+img{
+    grid-area: pic;
+    
+}
+
+#up{
+    grid-area: up;
+}
+
+#left{
+    grid-area: left;
+}
+
+#right{
+    grid-area: right;
+}
+
+#down{
+    grid-area: down;
 }
 
 /* CSS for list of likes page */
