@@ -51,6 +51,7 @@ userModel.editLikes = (times, foodID, userID) => {
                 return reject(error);
             }
             console.log("Successfully updated the list of likes!")
+            console.log(results)
             return resolve(results);
         });
     });
@@ -63,6 +64,7 @@ userModel.addLikes = (userID, foodID, foodName) => {
                 return reject(error);
             }
             console.log("Successfully added to the list of likes!")
+            console.log(results)
             return resolve(results);
         });
     });
