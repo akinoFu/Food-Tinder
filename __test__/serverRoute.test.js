@@ -33,6 +33,7 @@ describe("GET a list of food (/api/food/)", () => {
         .then((response) => {
             expect(response.res.statusCode).toEqual(200);
         })
+        
     });
 
     it("Check the length of the data", function (done) {
