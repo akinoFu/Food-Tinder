@@ -32,20 +32,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => {
-    console.log(`User details are: `);
-    console.log(req.user);
+// app.use((req, res, next) => {
+//     console.log(`User details are: `);
+//     console.log(req.user);
   
-    console.log("Entire session object:");
-    console.log(req.session);
+//     console.log("Entire session object:");
+//     console.log(req.session);
   
-    console.log(`Session details are: `);
-    console.log(req.session.passport);
+//     console.log(`Session details are: `);
+//     console.log(req.session.passport);
   
-    console.log(`Session stored`);
-    console.log(req.sessionStore.sessions);
-    next();
-});
+//     console.log(`Session stored`);
+//     console.log(req.sessionStore.sessions);
+//     next();
+// });
 
 app.use('/api/food', apiRouter);
 app.use('/auth', authRouter);
