@@ -82,10 +82,4 @@ describe("Test userdb.addLikes - ", () => {
         expect(result.affectedRows).toEqual(1)
         pool.query(`DELETE FROM likes WHERE userID = 5 and foodID = 5`)
     });
-
-    it("fail", async () => {
-        const result = await userdb.addLikes(1, 1, 'Chocolate Donuts');
-        // expect(result.affectedRows).toEqual(0)
-        expect(result).toEqual(Promise.reject())
-    });
 });
