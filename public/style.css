@@ -9,8 +9,8 @@ html, body{
 
 .wrapper{
     display: grid;
-    grid-template-rows: 100px 100px 1fr;
-    grid-template-columns: 200px 1fr 1fr;  
+    grid-template-rows: auto 6.5rem auto;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     grid-template-areas: 
     'sidebar header .'
     'sidebar food .'
@@ -21,11 +21,17 @@ html, body{
     grid-area: header;
 }
 
+.title > img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .title > h1{
     text-align: center;
     color: #f90b6d;
     font-family: 'Open Sans', sans-serif;
-    font-size: 34px;
+    font-size: 2.125rem;
     font-weight: 300;
     font-family: 'Itim', cursive;
 }
@@ -51,9 +57,9 @@ html, body{
     '.    down  .'; 
 }
 
-img{
+
+.wrapper > .swipe_image > img{
     grid-area: pic;
-    
 }
 
 #up{
@@ -70,6 +76,11 @@ img{
 
 #down{
     grid-area: down;
+}
+
+.swipe_image{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* CSS for list of likes page */
@@ -136,4 +147,17 @@ img{
 
 .content >.table_list > table > tbody > tr > td{
     padding: 5px;
+}
+
+/* Media Query */
+@media screen and (max-width: 800px){
+    body{
+        background-color: red;
+    
+    }
+    .wrapper{
+        grid-column: auto;
+        grid-template-rows: 1rem 1rem 1fr;
+        grid-template-columns: 55rem 1fr 1fr;
+    }
 }
