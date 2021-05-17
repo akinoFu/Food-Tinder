@@ -5,7 +5,11 @@
   "main": "index.js",
   "jest": {
     "verbose": true,
-    "coveragePathIgnorePatterns": ["/routes/authRoute.js", "/middleware/", "/routes/"]
+    "coveragePathIgnorePatterns": [
+      "/routes/authRoute.js",
+      "/middleware/",
+      "/routes/"
+    ]
   },
   "dependencies": {
     "dotenv": "^8.2.0",
