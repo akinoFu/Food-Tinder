@@ -68,4 +68,15 @@ userModel.addLikes = (userID, foodID, foodName) => {
     });
 };
 
+userModel.addNewUser = (name, email, password) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`INSERT INTO users SELECT MAX(id) + 1, "${name}", "${email}", "${password}" FROM users`, (error, results) => {
+            if (error) {
+                return reject(error);
+            }
+            return resolve(results)
+        })
+    })
+}
+
 module.exports = { userModel };
