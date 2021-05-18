@@ -149,6 +149,15 @@ html, body{
     padding: 5px;
 }
 
+/* CSS for login/register pages */
+.auth_title {
+    text-decoration: none;
+    color: black;
+}
+.auth_title:hover {
+    text-decoration: none;
+    color: black;
+}
 /* Media Query */
 @media screen and (max-width: 800px){
     body{
