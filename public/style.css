@@ -7,6 +7,10 @@ html, body{
     overflow: hidden;
 }
 
+.swipe {
+    margin-top: 2%;
+}
+
 .wrapper{
     display: grid;
     grid-template-rows: auto 6.5rem auto;
@@ -85,12 +89,9 @@ html, body{
 
 /* CSS for list of likes page */
 
-.header, .footer{
+.footer{
     height: 7vh;
     background: #b4637a;
-}
-
-.footer{
     position: absolute;
     bottom:0;
     width:100%;
@@ -101,22 +102,9 @@ html, body{
 .header > .btn-primary{
     font-size: 20px;
     float: right;
-    background-color: #b4637a;
+    background-color: ;
     border: none;
     margin-top: 15px;
-}
-
-.header > h1{
-    display: inline-block;
-}
-
-.header > img{
-    display: inline-block;
-
-}
-
-.header > .btn-primary:hover{
-    background-color: #b4637a;
 }
 
 .content{
@@ -170,3 +158,29 @@ html, body{
         grid-template-columns: 55rem 1fr 1fr;
     }
 }
+
+  /* Style the links inside the navigation bar */
+  .topnav {
+      background-color: #b4637a;
+      display: flex;
+  }
+
+  .topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 26px 20px;
+    text-decoration: none;
+    font-size: 26px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #d12254;
+    color: black;
+  }
+
+  .nav_title {
+    margin: auto;
+    width: 90%;
+  }

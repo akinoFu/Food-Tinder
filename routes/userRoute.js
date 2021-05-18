@@ -9,12 +9,13 @@ router.get('/:id', ensureAuthenticated, async(req, res, next) => {
     try {
         let user = await db.findById(req.params.id);
         let name = JSON.parse(JSON.stringify(user))[0].fullname;
+        let userID = JSON.parse(JSON.stringify(user))[0].id;
         let result = await db.findLikes(req.params.id);
         let likes = JSON.parse(JSON.stringify(result));
         let sortedLikes = likes.sort(function(a, b) {
             return b.timesLiked - a.timesLiked
         })
-        res.render("./dashboard", {user: name, list: sortedLikes});  
+        res.render("./dashboard", {user: name, list: sortedLikes, id:userID});  
     } 
     catch (error) {
         console.log(error);

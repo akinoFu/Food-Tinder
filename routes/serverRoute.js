@@ -33,6 +33,7 @@ router.get('/:id', ensureAuthenticated, async(req, res, next) => {
         let result = await db.one(req.params.id);
         let food = JSON.parse(JSON.stringify(result));
         let name = food[0].FoodName
+        let userID = req.session.passport.user;
         await unsplash.photos.getRandom({
             query: name,
             featured: true,
@@ -44,7 +45,7 @@ router.get('/:id', ensureAuthenticated, async(req, res, next) => {
                 case 'success':
                     const photo = JSON.parse(JSON.stringify(result.response));
                     url = photo[0].urls.regular
-                    res.render("./swipe", {food: name, photo: url})
+                    res.render("./swipe", {food: name, photo: url, id: userID})
             }
         });
     } 
