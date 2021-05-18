@@ -67,18 +67,19 @@ html, body{
 }
 
 button{
-    background-color: #d4fcc340;
+    background-color: #d4fcc3;
+    opacity: .5;
     padding: 1rem;
     border: none;
     font-size: 2rem;
 }
 
 button:hover{
-    background-color: #d4fcc390; 
+    opacity: .6;
 }
 
 button:active{
-    background-color: #d4fcc3ff;
+    opacity: .75;
 }
 
 #up{
