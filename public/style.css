@@ -66,6 +66,21 @@ html, body{
     grid-area: pic;
 }
 
+button{
+    background-color: #d4fcc380;
+    padding: 1rem;
+    border: none;
+    font-size: 2rem;
+}
+
+button:hover{
+    background-color: #d4fcc3a0;
+}
+
+button:active{
+    background-color: #d4fcc3ff;
+}
+
 #up{
     grid-area: up;
 }
