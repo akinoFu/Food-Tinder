@@ -12,3 +12,9 @@ function likeFood(){
     location.replace(`http://localhost:3000/api/food/${pageInt}/likes`)
 
 }
+
+function restaurantPage(){
+    var foodName = document.getElementById('send_name').textContent;
+    console.log(foodName)
+    location.replace(`http://localhost:3000/restaurant/${foodName}`)
+}

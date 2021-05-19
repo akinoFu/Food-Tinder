@@ -12,7 +12,7 @@ const { createApi } =require("unsplash-js");
 
 global.fetch = fetch;
 const unsplash = createApi({
-  accessKey: "YZxaihlPPvx1yPCqSc-euoYSTlmiFuB-2q8j1w-rZvU",
+  accessKey: "-Q82q_FR4IuZQx80N1nReT52ntv7r2tjSVvIVLZSA6w",
   fetch: fetch
 })
 
@@ -33,7 +33,7 @@ router.get('/:id', ensureAuthenticated, async(req, res, next) => {
         let result = await db.one(req.params.id);
         let food = JSON.parse(JSON.stringify(result));
         let name = food[0].FoodName
-        let userID = req.session.passport.user;
+        let userID = await req.session.passport.user;
         await unsplash.photos.getRandom({
             query: name,
             featured: true,

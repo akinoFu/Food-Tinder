@@ -98,15 +98,6 @@ html, body{
     height:60px;
 }
 
-
-.header > .btn-primary{
-    font-size: 20px;
-    float: right;
-    background-color: ;
-    border: none;
-    margin-top: 15px;
-}
-
 .content{
     display: flex;
     flex-direction: column;
@@ -159,28 +150,33 @@ html, body{
     }
 }
 
-  /* Style the links inside the navigation bar */
-  .topnav {
-      background-color: #b4637a;
-      display: flex;
-  }
+/* Style the links inside the navigation bar */
+.topnav {
+    background-color: #b4637a;
+    display: flex;
+}
 
-  .topnav a {
+.topnav a {
     float: right;
     color: #f2f2f2;
     text-align: center;
     padding: 26px 20px;
     text-decoration: none;
     font-size: 26px;
-  }
+}
   
-  /* Change the color of links on hover */
-  .topnav a:hover {
+/* Change the color of links on hover */
+.topnav a:hover {
     background-color: #d12254;
     color: black;
-  }
+}
 
-  .nav_title {
+.nav_title {
     margin: auto;
     width: 90%;
-  }
+}
+
+/* CSS for restaurant page */
+.restaurant {
+    padding-left: 20px;
+}
