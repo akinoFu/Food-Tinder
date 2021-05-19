@@ -67,14 +67,14 @@ html, body{
 }
 
 button{
-    background-color: #d4fcc340;
+    background-color: #d4fcc380;
     padding: 1rem;
     border: none;
     font-size: 2rem;
 }
 
 button:hover{
-    background-color: #d4fcc390; 
+    background-color: #d4fcc3a0;
 }
 
 button:active{
