@@ -20,7 +20,7 @@ CREATE TABLE likes (
 	foodID INT NOT NULL,
 	foodName VARCHAR(50) NOT NULL,
     timesLiked INT NOT NULL,
-    PRIMARY KEY (userID, FoodID);
+    PRIMARY KEY (userID, FoodID)
 	-- FOREIGN KEY (userID) REFERENCES users(id),
 	-- FOREIGN KEY (foodID) REFERENCES food_option(ID)
 );
