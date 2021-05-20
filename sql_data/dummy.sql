@@ -25,19 +25,12 @@ CREATE TABLE likes (
 	-- FOREIGN KEY (foodID) REFERENCES food_option(ID)
 );
 
-INSERT  INTO likes VALUES (1, "65", "Chicken Noodle Soup", "2");
-INSERT  INTO likes VALUES (1, "21", "Crab Cake", "2");
-INSERT  INTO likes VALUES (1, "99", "Egg Sandwich", "3");
-INSERT  INTO likes VALUES (1, "5", "Blueberry Muffin","5");
-INSERT  INTO likes VALUES (1, "12", "Egg Waffle", "1");
-INSERT  INTO likes VALUES (2, "43", "IceCream", "2");
-INSERT  INTO likes VALUES (2, "22", "Happy Meal", "2");
-INSERT  INTO likes VALUES (3, "95", "Croissant", "3");
-INSERT  INTO likes VALUES (4, "55", "Vanilla Cake", "5");
-INSERT  INTO likes VALUES (5, "12", "Egg Waffle", "1");
-INSERT  INTO likes VALUES (5, "32", "Greek Salad", "3");
-INSERT  INTO likes VALUES (5, "17", "French Toast", "10");
-INSERT  INTO likes VALUES (5, "16", "Chocolate Waffle", "9");
+INSERT  INTO likes VALUES (1, "1", "Chocolate Donuts", "3");
+INSERT  INTO likes VALUES (1, "2", "Ramen", "2");
+INSERT  INTO likes VALUES (1, "3", "Roast Chichen", "3");
+INSERT  INTO likes VALUES (1, "4", "Pho","5");
+INSERT  INTO likes VALUES (1, "5", "Hamburger", "1");
+
 
 
 DROP TABLE IF EXISTS `food_option`;
