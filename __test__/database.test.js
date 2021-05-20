@@ -11,6 +11,9 @@ const pool = mysql.createPool({
     connectionLimit: 10
 });
 
+/* #######################################
+        test for database/index.js
+   ####################################### */
 describe("Test db.all - return all food", () => {
     it("success", async () => {
         const result = await db.all();
@@ -34,7 +37,9 @@ describe("Return a food with an ID", () => {
     });
 });
 
-
+/* #######################################
+        test for database/userModel.js
+   ####################################### */
 describe("Test userdb.findOne - return info by user email", () => {
     it("success", async () => {
         const result = await userdb.findOne('ayamamoto7@my.bcit.ca');
@@ -50,7 +55,6 @@ describe("Test userdb.findById - return info by user id", () => {
 });
 
 // unit test for like functions
-
 describe("Test userdb.findLikes - ", () => {
     it("success", async () => {
         const result = await userdb.findLikes(1);
@@ -81,5 +85,14 @@ describe("Test userdb.addLikes - ", () => {
         const result = await userdb.addLikes(5, 5, 'Hamburger');
         expect(result.affectedRows).toEqual(1)
         pool.query(`DELETE FROM likes WHERE userID = 5 and foodID = 5`)
+    });
+});
+
+
+describe("Test userdb.addNewUser - ", () => {
+    it("success", async () => {
+        const result = await userdb.addNewUser('test name', 'test@test', 'testpw');
+        expect(result.affectedRows).toEqual(1)
+        pool.query(`DELETE FROM users WHERE email = "test@test"`)
     });
 });

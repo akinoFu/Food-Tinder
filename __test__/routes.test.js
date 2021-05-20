@@ -2,7 +2,6 @@ const app = require("../index");
 const db = require("../database/index");
 const users = require('../database/userModel').userModel;
 const request = require("supertest");
-// const auth = require("../middleware/checkAuth")
 const server = request.agent(app);
 
 function loginUser() {
@@ -10,11 +9,7 @@ function loginUser() {
         server
         .post("/auth/login")
         .send({ email: "ayamamoto7@my.bcit.ca", password: "Group7!" })
-        // .then((response) => {
-        //     expect(response.res.statusCode).toEqual(302);
-        // })
         .expect(302)
-        // .expect("Location", "/api/food/1")
         .then(() => done());
     };
 }
@@ -180,3 +175,6 @@ describe("GET a list of likes (/user/:id)", () => {
       });
 });
 
+/* #######################################
+        test for restaurantRoute.js
+   ####################################### */
