@@ -8,14 +8,14 @@
                 <img src = "/Food_Tinder.png" alt = "logo" width = "100" height = "100">
             </div>
             <div class = "food_name">
-                <h1><%= food %></h1>
+                <h1 id="send_name"><%= food %></h1>
             </div>
             <div class = swipe_image>
                 <button id='up' onclick="likeFood()">Like! :)</button> 
                 <button id='left' onclick="randomPage()">Swipe away</button> 
                 <img id='foodpic' src= <%= url %> width = 500 height = 500>
                 <button id='right' onclick="randomPage()">Swipe away</button> 
-                <button id='down' onclick="randomPage()">TO DO: RESTAURANTS</button> 
+                <button id='down' onclick="restaurantPage()">Restaurants</button> 
             </div>
         </div>
     </div>

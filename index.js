@@ -6,6 +6,7 @@ const passport = require("./middleware/passport");
 const apiRouter = require('./routes/serverRoute');
 const authRouter = require('./routes/authRoute');
 const userRouter = require('./routes/userRoute');
+const restaurantRouter = require('./routes/restaurantRoute');
 
 const app = express();
 
@@ -50,7 +51,8 @@ app.use(passport.session());
 
 app.use('/api/food', apiRouter);
 app.use('/auth', authRouter);
-app.use('/user', userRouter)
+app.use('/user', userRouter);
+app.use('/restaurant', restaurantRouter);
 
 console.log(`node-env: ${process.env.NODE_ENV}`)
 

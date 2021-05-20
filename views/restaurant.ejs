@@ -1,0 +1,10 @@
+<body>
+    <%- include('partials/navbar')%>
+    <div class="restaurant"> 
+        <h1>Restaurants that serves:</h1>
+        <h2 id="find_food"><%=query%></h2>
+        <ol id="places"></ol>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%=apiID%>&limit=10&libraries=places"></script>
+        <script src="/JS/places.js"></script>
+    </div>
+</body>
