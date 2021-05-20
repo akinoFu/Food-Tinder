@@ -40,15 +40,15 @@ INSERT  INTO users VALUES (5, "Ingrid", "xzeng11@my.bcit.ca", "Group7!");
 -- INSERT  INTO likes VALUES (5, "16", "Chocolate Waffle", "9");
 
 
--- DROP TABLE IF EXISTS `food_option`;
--- CREATE TABLE food_option (
--- ID INT NOT NULL,
--- FoodName VARCHAR(50) NOT NULL,
--- PRIMARY KEY (ID)
--- );
+DROP TABLE IF EXISTS `food_option`;
+CREATE TABLE food_option (
+ID INT NOT NULL,
+FoodName VARCHAR(50) NOT NULL,
+PRIMARY KEY (ID)
+);
 
--- insert into food_option (ID, FoodName) values (1, 'Chocolate Donuts');
--- insert into food_option (ID, FoodName) values (2, 'Ramen');
--- insert into food_option (ID, FoodName) values (3, 'Roast Chichen');
--- insert into food_option (ID, FoodName) values (4, 'Pho');
--- insert into food_option (ID, FoodName) values (5, 'Hamburger');
+insert into food_option (ID, FoodName) values (1, 'Chocolate Donuts');
+insert into food_option (ID, FoodName) values (2, 'Ramen');
+insert into food_option (ID, FoodName) values (3, 'Roast Chichen');
+insert into food_option (ID, FoodName) values (4, 'Pho');
+insert into food_option (ID, FoodName) values (5, 'Hamburger');

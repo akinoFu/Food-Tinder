@@ -51,6 +51,7 @@ jobs:
             sudo apt-get install default-mysql-client
             mysql -h 127.0.0.1 -u admin -proot food_test < sql_data/dummy.sql
             mysql -h 127.0.0.1 -u admin -proot --execute="SELECT * FROM food_test.users"
+            mysql -h 127.0.0.1 -u admin -proot --execute="SELECT * FROM food_test.food_option"
       - run:
           name: Run tests
           command: npm test
