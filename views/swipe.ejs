@@ -1,6 +1,5 @@
 <body>
     <%- include('partials/navbar')%>
-    <script src="/JS/app.js"></script>
     <div class="swipe">
         <div class = "wrapper">
             <div class = "title">
@@ -13,10 +12,12 @@
             <div class = swipe_image>
                 <button id='up' onclick="likeFood()">Like! :)</button> 
                 <button id='left' onclick="randomPage()">Swipe away</button> 
-                <img id='foodpic' src= <%= url %> width = 500 height = 500>
+                <img id='foodpic' src= <%= url %> width = 500 height = 500 draggable="false" onmousedown="return false" style="user-drag: none" >
                 <button id='right' onclick="randomPage()">Swipe away</button> 
                 <button id='down' onclick="restaurantPage()">Restaurants</button> 
             </div>
         </div>
     </div>
+    <script src="/JS/hammer.min.js"></script>
+    <script src="/JS/app.js"></script>
 </body>
