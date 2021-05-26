@@ -54,7 +54,7 @@ app.use('/auth', authRouter);
 app.use('/user', userRouter);
 app.use('/restaurant', restaurantRouter);
 
-console.log(`node-env: ${process.env.NODE_ENV}`)
+// console.log(`node-env: ${process.env.NODE_ENV}`)
 
 app.listen(3000, function() {
     console.log(
