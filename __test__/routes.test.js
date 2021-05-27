@@ -178,3 +178,15 @@ describe("GET a list of likes (/user/:id)", () => {
 /* #######################################
         test for restaurantRoute.js
    ####################################### */
+
+   describe("GET a list of restaurants (/restaurant/:food)", () => {
+
+    it("Check the statuscode (success)", (done) => {
+        server
+        .get("/restaurant/1")
+        .then((response) => {
+            expect(response.res.statusCode).toEqual(200);
+        })
+        .then(() => done());
+    });
+});
