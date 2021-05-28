@@ -1,6 +1,6 @@
 const app = require("../index");
-const db = require("../database/index");
-const users = require('../database/userModel').userModel;
+const foodModel = require("../database/foodModel").foodDatabase;
+const userModel = require('../database/userModel').userModel;
 const request = require("supertest");
 const server = request.agent(app);
 
@@ -24,7 +24,7 @@ describe("GET a list of food (/api/food/)", () => {
     mockDbAll.mockReturnValue([{ID: 1, FoodName: "Chocolate Donuts"},
                           {ID: 2, FoodName: "Ramen"},
                           {ID: 3, FoodName: "Roast Chicken"}])
-    db.all = mockDbAll
+    foodModel.all = mockDbAll
     it("test if login is success", loginUser());
 
 
@@ -47,7 +47,7 @@ describe("GET a list of food (/api/food/)", () => {
     });
 
     it("Check the statuscode (failure)", (done) => {
-        db.all.mockImplementationOnce(() => Promise.reject());
+        foodModel.all.mockImplementationOnce(() => Promise.reject());
         server
         .get("/api/food")
         .then((response) => {
@@ -57,14 +57,13 @@ describe("GET a list of food (/api/food/)", () => {
     });
 });
 
-
 // ========== GET a food pict (/api/food/:id) ==========
 describe("Get a food pict (/api/food/:id)", () => {
     const mockDbOne = jest.fn()
     const r = Promise.resolve([{ID: 1, FoodName: "Chocolate Donuts"}])
     mockDbOne.mockReturnValue(r)
     // mockDbOne.mockReturnValue([{ID: 1, FoodName: "Chocolate Donuts"}])
-    db.one = mockDbOne
+    foodModel.one = mockDbOne
 
     it("Check the statuscode (success)", (done) => {
         server
@@ -85,7 +84,7 @@ describe("Get a food pict (/api/food/:id)", () => {
     });
 
     it("Check the statuscode (failure)", (done) => {
-        db.one.mockImplementationOnce(() => Promise.reject());
+        foodModel.one.mockImplementationOnce(() => Promise.reject());
         server
         .get("/api/food/1")
         .then((response) => {
@@ -95,12 +94,11 @@ describe("Get a food pict (/api/food/:id)", () => {
     });
 });
 
-
 // ========== Update likes (/api/food/:id/likes) ==========
 describe("Update the likes table (/api/food/:id/likes)", () => {
     const mockDbOne = jest.fn()
     mockDbOne.mockReturnValue([{ID: 1, FoodName: "Chocolate Donuts"}])
-    db.one = mockDbOne
+    foodModel.one = mockDbOne
 
     const mockFindLikes = jest.fn()
     const result = [{FoodName: "Chocolate Donuts", TimesLiked:4},
@@ -109,13 +107,13 @@ describe("Update the likes table (/api/food/:id/likes)", () => {
                     {FoodName: "Pho", TimedsLiked: 1},
                     {FoodName: "Hamburger", TimedsLiked: 2}]
     mockFindLikes.mockReturnValue(result)
-    users.findLikes = mockFindLikes
+    userModel.findLikes = mockFindLikes
 
     const mockEditLikes = jest.fn(() => true)
-    users.editLikes = mockEditLikes
+    userModel.editLikes = mockEditLikes
 
     const mockAddLikes = jest.fn(() => true)
-    users.addLikes = mockAddLikes
+    userModel.addLikes = mockAddLikes
 
     it("Check the statuscode (success)", (done) => {
         server
@@ -127,7 +125,7 @@ describe("Update the likes table (/api/food/:id/likes)", () => {
     });
 
     it("Check the statuscode (failure)", (done) => {
-        db.one.mockImplementationOnce(() => Promise.reject());
+        foodModel.one.mockImplementationOnce(() => Promise.reject());
         server
         .get("/api/food/1/likes")
         .then((response) => {
@@ -144,7 +142,7 @@ describe("GET a list of likes (/user/:id)", () => {
     const mockFindById = jest.fn();
     const result1 = [{id: 1, fullname: "test", email:"test@test", password:"test"}]
     mockFindById.mockReturnValue(result1)
-    users.findById = mockFindById
+    userModel.findById = mockFindById
 
     const mockFindLikes = jest.fn();
     const result2 = [{userId: 1, foodId: 1, FoodName: "Chocolate Donuts", TimesLiked:4},
@@ -153,7 +151,7 @@ describe("GET a list of likes (/user/:id)", () => {
                     {userId: 1, foodId: 4, FoodName: "Pho", TimedsLiked: 1},
                     {userId: 1, foodId: 5, FoodName: "Hamburger", TimedsLiked: 2}]
     mockFindLikes.mockReturnValue(result2)
-    users.findLikes = mockFindLikes
+    userModel.findLikes = mockFindLikes
 
     it("Check the statuscode (success)", (done) => {
         server
@@ -165,7 +163,7 @@ describe("GET a list of likes (/user/:id)", () => {
     });
 
     it("Check the statuscode (failure)", (done) => {
-        users.findLikes.mockImplementationOnce(() => Promise.reject());
+        userModel.findLikes.mockImplementationOnce(() => Promise.reject());
         server
         .get("/user/100")
         .then((response) => {
@@ -178,7 +176,7 @@ describe("GET a list of likes (/user/:id)", () => {
 /* #######################################
         test for restaurantRoute.js
    ####################################### */
-
+// ========== GET a list of restaurants (/restaurant/:food) ==========
    describe("GET a list of restaurants (/restaurant/:food)", () => {
 
     it("Check the statuscode (success)", (done) => {

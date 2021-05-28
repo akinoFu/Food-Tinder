@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../database/index');
-const users = require('../database/userModel').userModel;
+const foodModel = require('../database/foodModel').foodDatabase;
+const userModel = require('../database/userModel').userModel;
 
 // Authentication check
 const { ensureAuthenticated } = require('../middleware/checkAuth');
@@ -16,10 +16,10 @@ const unsplash = createApi({
   fetch: fetch
 })
 
-
+/* Return a list of food items */
 router.get('/', ensureAuthenticated, async(req, res, next) => {
     try {
-        let results = await db.all();
+        let results = await foodModel.all();
         res.json(results)
     } 
     catch (error) {
@@ -28,9 +28,10 @@ router.get('/', ensureAuthenticated, async(req, res, next) => {
     }
 });
 
+/* Send the picture of a food item to the swipe page */
 router.get('/:id', ensureAuthenticated, async(req, res, next) => {
     try {
-        let result = await db.one(req.params.id);
+        let result = await foodModel.one(req.params.id);
         let food = JSON.parse(JSON.stringify(result));
         let name = food[0].FoodName
         let userID = await req.session.passport.user;
@@ -55,14 +56,15 @@ router.get('/:id', ensureAuthenticated, async(req, res, next) => {
     }
 });
 
+/* Add a food item to the list of like */
 router.get('/:id/likes', ensureAuthenticated, async(req, res, next) => {
     try {
-        let result = await db.one(req.params.id);
+        let result = await foodModel.one(req.params.id);
         let food = JSON.parse(JSON.stringify(result));
         let foodID = food[0].ID;
         let name = food[0].FoodName;
         let userID = req.session.passport.user;
-        let likes = await users.findLikes(userID)
+        let likes = await userModel.findLikes(userID)
         
         let isUpdate = false;
         let times = 0;
@@ -75,10 +77,10 @@ router.get('/:id/likes', ensureAuthenticated, async(req, res, next) => {
 
         if (isUpdate) {
             let newTimes = times + 1;
-            await users.editLikes(newTimes, foodID, userID);
+            await userModel.editLikes(newTimes, foodID, userID);
             res.redirect(`/api/food/${foodID}`)
         } else {
-            await users.addLikes(userID, foodID, name);
+            await userModel.addLikes(userID, foodID, name);
             res.redirect(`/api/food/${foodID}`);
         }
     }

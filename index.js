@@ -33,29 +33,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-// app.use((req, res, next) => {
-//     console.log(`User details are: `);
-//     console.log(req.user);
-  
-//     console.log("Entire session object:");
-//     console.log(req.session);
-  
-//     console.log(`Session details are: `);
-//     console.log(req.session.passport);
-  
-//     console.log(`Session stored`);
-//     console.log(req.sessionStore.sessions);
-//     next();
-// });
-
+// Routes
 app.use('/api/food', apiRouter);
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
 app.use('/restaurant', restaurantRouter);
 
-// console.log(`node-env: ${process.env.NODE_ENV}`)
-
+// Start the server
 app.listen(3000, function() {
     console.log(
         "Server running. Visit: http://localhost:3000 in your browser 🚀"
