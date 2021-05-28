@@ -11,9 +11,9 @@
             </div>
             <div class = swipe_image>
                 <button id='up' onclick="likeFood()">Like! :)</button> 
-                <button id='left' onclick="randomPage()">Swipe away</button> 
+                <button id='left' class="material-icons" onclick="randomPage()">arrow_left</button>
                 <img id='foodpic' src= <%= url %> width = 500 height = 500 draggable="false" onmousedown="return false" style="user-drag: none" >
-                <button id='right' onclick="randomPage()">Swipe away</button> 
+                <button id='right' class ="material-icons" onclick="randomPage()">arrow_right</button>
                 <button id='down' onclick="restaurantPage()">Restaurants</button> 
             </div>
         </div>

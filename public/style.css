@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
 html, body{
     background-color: #ebbcba;
     height: 100vh;
@@ -58,7 +60,7 @@ html, body{
     grid-area: image;
     display: grid;
     grid-template-rows: auto 500px auto;
-    grid-template-columns: 100px 500px 100px;
+    grid-template-columns: 50px 500px 50px;
     grid-template-areas: 
     '.    up    .'
     'left pic   right'
@@ -90,10 +92,12 @@ button:active{
 
 #left{
     grid-area: left;
+    font-size: 8rem;
 }
 
 #right{
     grid-area: right;
+    font-size: 8rem;
 }
 
 #down{
