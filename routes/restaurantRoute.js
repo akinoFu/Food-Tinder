@@ -4,7 +4,7 @@ const { ensureAuthenticated } = require('../middleware/checkAuth');
 
 const fetch  = require("node-fetch")
 
-
+/* Show a list of restaurants for a food item */
 router.get('/:food', ensureAuthenticated, async(req, res, next) => {
     try {
         let clientID = "AIzaSyB8xBoyF_g2_rciDFC9sgx43EUgE_oRQug";

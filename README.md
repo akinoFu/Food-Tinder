@@ -1,5 +1,5 @@
 # Food Tinder
-***For when you’re as hungry as you are thirsty***
+***For when you’re as hungry as you are thirsty***  
 Food Tinder is a web app that recommends restaurants to a user who wants inspiration about what to eat.
 
 ## Before using...

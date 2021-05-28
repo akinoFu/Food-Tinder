@@ -1,16 +1,8 @@
-const mysql = require('mysql');
-
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'admin',
-    password: 'root',
-    database: process.env.NODE_ENV == "test"? 'food_test': "food",
-    port: '3306',
-    connectionLimit: 10
-});
+const pool = require("./index").pool
 
 let userModel = {}
 
+/* Find a user by an email */
 userModel.findOne = (email) => {
     return new Promise((resolve, reject) => {
         pool.query(`SELECT * FROM users WHERE email ="${email}"`, (error, results) => {
@@ -22,6 +14,7 @@ userModel.findOne = (email) => {
     });
 }
 
+/* Find a user by a user id */
 userModel.findById = (id) => {
     return new Promise((resolve, reject) => {
         pool.query(`SELECT * FROM users WHERE id =${id}`, (error, results) => {
@@ -33,6 +26,7 @@ userModel.findById = (id) => {
     })
 }
 
+/* Get a list of like by a user id */
 userModel.findLikes = (id) => {
     return new Promise((resolve, reject) => {
         pool.query(`SELECT foodName, timesLiked FROM likes WHERE userID = ${id}`, (error, results) => {
@@ -44,6 +38,7 @@ userModel.findLikes = (id) => {
     })
 }
 
+/* Update a record in likes table */
 userModel.editLikes = (times, foodID, userID) => {
     return new Promise((resolve, reject) => {
         pool.query(`UPDATE likes SET timesLiked = ${times} WHERE userID = ${userID} AND foodID = "${foodID}"`, (error, results) => {
@@ -56,6 +51,7 @@ userModel.editLikes = (times, foodID, userID) => {
     });
 };
 
+/* Insert a record into likes table */
 userModel.addLikes = (userID, foodID, foodName) => {
     return new Promise((resolve, reject) => {
         pool.query(`INSERT INTO likes VALUES (${userID}, ${foodID}, "${foodName}", 1)`, (error, results) => {
@@ -68,6 +64,7 @@ userModel.addLikes = (userID, foodID, foodName) => {
     });
 };
 
+/* Insert a new user data into users table */
 userModel.addNewUser = (name, email, password) => {
     return new Promise((resolve, reject) => {
         pool.query(`INSERT INTO users SELECT MAX(id) + 1, "${name}", "${email}", "${password}" FROM users`, (error, results) => {
