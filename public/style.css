@@ -63,7 +63,7 @@ html, body{
     grid-template-columns: 50px 500px 50px;
     grid-template-areas: 
     '.    up    .'
-    'left pic   right'
+    'left pic right'
     '.    down  .'; 
 }
 
@@ -92,12 +92,16 @@ button:active{
 
 #left{
     grid-area: left;
-    font-size: 8rem;
+    color: grey;
+    font-size: 3em;
+    text-align: center;
 }
 
 #right{
     grid-area: right;
-    font-size: 8rem;
+    font-size: 3rem;
+    color: grey;
+    text-align: center;
 }
 
 #down{
@@ -128,7 +132,8 @@ button:active{
 
 .content > .hello_user{
     padding-top: 50px;
-    padding-left: 350px;
+    padding-left: 50px;
+    font-display: flex;
 }
 
 .content > .list_likes{
@@ -169,7 +174,7 @@ button:active{
 }
 
 .topnav a {
-    float: right;
+    float: auto;
     color: #f2f2f2;
     text-align: center;
     padding: 26px 20px;
@@ -222,7 +227,7 @@ button:active{
 
     .swipe_image{
         grid-template-rows: auto 300px auto;
-        grid-template-columns: 100px 300px 100px;
+        grid-template-columns: 50px 300px 50px;
     }
 
     #foodpic{
@@ -235,7 +240,7 @@ button:active{
         font-size: 1rem;
     }
 
-    /* top navigation menu */
+    /* top navigation menu */ 
     .topnav a {
         padding: 14px 12px;
         font-size: 1rem;
