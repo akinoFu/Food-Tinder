@@ -1,6 +1,9 @@
 const userController = require("../controllers/userController");
 const userModel = require("../database/userModel").userModel
 
+/* #######################################
+        test for userController.js
+   ####################################### */
 describe("Test userController.getUserByEmailIdAndPassword", () => {
     const mockModelFindOne = jest.fn();
     const result = [{id: 1, fullname: 'test', email:'test@my.bcit.ca', password:'Group7!'}]
@@ -55,7 +58,6 @@ describe("Test userController.getUserByEmail", () => {
         expect(user).toEqual(null)
       });
 });
-
 
 describe("Test userController.addUser", () => {
     const mockModelAddNewUser = jest.fn();

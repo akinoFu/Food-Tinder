@@ -1,4 +1,4 @@
-
+-- SQL script for Circle CI
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE users (
     id INT NOT NULL,
